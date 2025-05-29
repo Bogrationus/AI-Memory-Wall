@@ -1,0 +1,137 @@
+{
+  "app": {
+    "name": "AI Memory Wall",
+    "tagline": "Leave your mark in digital history"
+  },
+  "navigation": {
+    "home": "Home",
+    "messages": "Messages",
+    "profile": "Profile",
+    "admin": "Admin Panel",
+    "settings": "Settings"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithGithub": "Sign in with GitHub",
+    "continueAsGuest": "Continue as Guest",
+    "welcomeBack": "Welcome back!",
+    "newHere": "New here?"
+  },
+  "greetings": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening",
+    "night": "Good night",
+    "newUser": "We're glad to welcome you!",
+    "returningUser": "Great to see you again!",
+    "frequentUser": "Hello, it's nice to see you again!"
+  },
+  "messageForm": {
+    "placeholder": "Share your thoughts...",
+    "send": "Send",
+    "charactersLeft": "Characters left: {count}",
+    "inspirationButton": "Need inspiration?",
+    "postAnonymously": "Post anonymously"
+  },
+  "messages": {
+    "empty": "No messages yet. Be the first!",
+    "loading": "Loading messages...",
+    "error": "Error loading messages",
+    "newest": "Newest",
+    "popular": "Popular",
+    "yours": "Your messages",
+    "recommended": "Recommended for you",
+    "replyTo": "Reply",
+    "postedOn": "Posted on {date}",
+    "postedBy": "By {name}",
+    "anonymous": "Anonymous"
+  },
+  "reactions": {
+    "like": "Like",
+    "love": "Love",
+    "laugh": "Laugh",
+    "sad": "Sad",
+    "angry": "Angry",
+    "addReaction": "Add reaction",
+    "reactionsCount": "{count} reactions"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "messages": "Messages",
+    "reports": "Reports",
+    "settings": "Settings",
+    "toxicityThreshold": "Toxicity threshold",
+    "moderationQueue": "Moderation queue",
+    "hideMessage": "Hide message",
+    "unhideMessage": "Unhide message",
+    "banUser": "Ban user",
+    "unbanUser": "Unban user",
+    "setModerator": "Set as moderator",
+    "removeModerator": "Remove moderator",
+    "telegramSettings": "Telegram settings",
+    "analyticsSettings": "Analytics settings",
+    "exportData": "Export data",
+    "hiddenReason": "Reason for hiding"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "auto": "Auto",
+    "notifications": "Notifications",
+    "email": "Email",
+    "telegram": "Telegram",
+    "none": "None",
+    "save": "Save",
+    "saved": "Saved"
+  },
+  "analytics": {
+    "weeklyReport": "Weekly report",
+    "topWords": "Popular words",
+    "messageCount": "Message count",
+    "userActivity": "User activity",
+    "toxicityLevels": "Toxicity levels",
+    "reactionDistribution": "Reaction distribution",
+    "timeDistribution": "Time distribution",
+    "languageDistribution": "Language distribution"
+  },
+  "inspiration": {
+    "quotes": [
+      "Share a thought that inspires you today.",
+      "What's the most interesting thing that happened to you this week?",
+      "If you could change one thing in the world, what would it be?",
+      "Which book or movie has recently impressed you?",
+      "Share your favorite memory.",
+      "What would you like to learn from other visitors?"
+    ]
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "auth": "Authentication error. Please try again.",
+    "forbidden": "You don't have access to this resource.",
+    "notFound": "The requested resource was not found.",
+    "toxicContent": "Your message contains inappropriate content. Please edit it."
+  },
+  "time": {
+    "now": "just now",
+    "minutesAgo": "{count} minutes ago",
+    "hoursAgo": "{count} hours ago",
+    "yesterday": "yesterday",
+    "daysAgo": "{count} days ago"
+  },
+  "seo": {
+    "title": "AI Memory Wall - Leave your mark in digital history",
+    "description": "Interactive guestbook with AI personalization. Share thoughts, get reactions, and be inspired by messages from other users."
+  },
+  "telegram": {
+    "connect": "Connect Telegram",
+    "disconnect": "Disconnect Telegram",
+    "notifications": "Telegram notifications",
+    "postCommand": "Use the /post command to publish a message"
+  }
+}

@@ -1,0 +1,184 @@
+/**
+ * Main CSS file for AI Memory Wall
+ * Contains global styles, theme variables, and responsive utilities
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors for light theme (default) */
+    --background: #f8f8f8;
+    --foreground: #121212;
+    --card-background: #ffffff;
+    --accent: #0090a3;
+    --accent-hover: #007a8a;
+    --accent-shadow: #0090a333;
+    
+    /* UI elements */
+    --border: #e0e0e0;
+    --input-background: #f0f0f0;
+    --button-text: #ffffff;
+    
+    /* Text colors */
+    --text-primary: #121212;
+    --text-secondary: #5a5a5a;
+    --text-tertiary: #8a8a8a;
+    
+    /* Status colors */
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+  }
+  
+  .dark {
+    /* Base colors for dark theme */
+    --background: #121212;
+    --foreground: #ffffff;
+    --card-background: #1e1e1e;
+    --accent: #00E0FF;
+    --accent-hover: #33e6ff;
+    --accent-shadow: #00e0ff33;
+    
+    /* UI elements */
+    --border: #333333;
+    --input-background: #2a2a2a;
+    --button-text: #121212;
+    
+    /* Text colors */
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #6a6a6a;
+    
+    /* Status colors */
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --error: #f87171;
+    --info: #60a5fa;
+  }
+  
+  html {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  /* Custom component styles */
+  .container {
+    @apply px-4 mx-auto;
+  }
+  
+  /* Responsive typography */
+  h1 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+  
+  h2 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  
+  h3 {
+    @apply text-lg md:text-xl font-medium;
+  }
+  
+  /* Animation classes */
+  .fade-in {
+    @apply opacity-0 animate-[fadeIn_0.5s_ease_forwards];
+  }
+  
+  .slide-up {
+    @apply translate-y-4 opacity-0 animate-[slideUp_0.5s_ease_forwards];
+  }
+  
+  /* Responsive layout helpers */
+  .mobile-only {
+    @apply block sm:hidden;
+  }
+  
+  .desktop-only {
+    @apply hidden sm:block;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    to { 
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Accessibility utilities */
+  .visually-hidden {
+    @apply sr-only;
+  }
+  
+  /* Touch target size for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}
+
+/* Mobile-first media queries */
+@media (max-width: 640px) {
+  /* Mobile accordion for messages */
+  .message-accordion {
+    @apply border-b border-border pb-2;
+  }
+  
+  .message-accordion-content {
+    @apply max-h-0 overflow-hidden transition-all duration-300;
+  }
+  
+  .message-accordion.open .message-accordion-content {
+    @apply max-h-[500px];
+  }
+}
+
+/* Responsive table for admin panel */
+@media (max-width: 768px) {
+  .responsive-table {
+    @apply block;
+  }
+  
+  .responsive-table thead {
+    @apply hidden;
+  }
+  
+  .responsive-table tbody {
+    @apply block;
+  }
+  
+  .responsive-table tr {
+    @apply block border rounded-lg mb-4 p-2;
+  }
+  
+  .responsive-table td {
+    @apply block text-right pl-[50%] relative;
+  }
+  
+  .responsive-table td::before {
+    @apply content-[attr(data-label)] absolute left-0 w-[45%] pl-4 font-medium text-left;
+  }
+}
