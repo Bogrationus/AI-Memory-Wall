@@ -3,6 +3,10 @@ const nextConfig = {
   // Increase timeout for function invocations
   experimental: {
     serverComponentsExternalPackages: [],
+    // Enable edge runtime for better performance
+    runtime: 'edge',
+    // Increase memory limit
+    memoryBasedWorkersCount: true,
   },
   
   // Configure image optimization
@@ -10,6 +14,9 @@ const nextConfig = {
     domains: [], // Add your image domains here
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
+    // Add image optimization error handling
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Configure headers for better security and performance
@@ -37,15 +44,32 @@ const nextConfig = {
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block'
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
           }
         ]
       }
     ]
   },
 
-  // Configure redirects
+  // Configure redirects with error handling
   async redirects() {
-    return []
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'header',
+            key: 'x-redirect-limit',
+            value: '(?<count>\\d+)',
+          },
+        ],
+        destination: '/error?code=INFINITE_LOOP_DETECTED',
+        permanent: false,
+      }
+    ]
   },
 
   // Configure rewrites
@@ -53,18 +77,59 @@ const nextConfig = {
     return []
   },
 
-  // Increase payload size limit
+  // Increase payload size limit and add timeout
   api: {
     bodyParser: {
       sizeLimit: '1mb',
     },
     responseLimit: '4mb',
+    // Add timeout configuration
+    timeout: 30, // seconds
   },
 
-  // Configure webpack if needed
+  // Configure webpack with optimizations
   webpack: (config, { isServer }) => {
+    // Optimize bundle size
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
+        minChunks: 1,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
+        cacheGroups: {
+          defaultVendors: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            reuseExistingChunk: true,
+          },
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+        },
+      },
+    }
+
     return config
   },
+
+  // Add error handling for deployment issues
+  onError: (err) => {
+    console.error('Next.js build error:', err)
+  },
+
+  // Configure build output
+  output: 'standalone',
+  
+  // Add compression
+  compress: true,
+  
+  // Configure powered by header
+  poweredByHeader: false,
 }
 
 module.exports = nextConfig 
